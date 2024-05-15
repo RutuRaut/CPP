@@ -127,9 +127,9 @@ void MainWindow::OnPushButtonEqualClicked()
 if (equalButtonClickCount == 0) {
         previousResult = evaluateExpression(expression);
     } else {
-        // Perform the same operation with the previous result and the current expression
+     
         if (!previousOperator.isEmpty()) {
-          //  double num2 = expression.toDouble(); // Use the current expression as the second operand
+        
             if (previousOperator == "+")
                 previousResult += previousnum2;
             else if (previousOperator == "-")
@@ -149,7 +149,7 @@ if (equalButtonClickCount == 0) {
         }
     }
 
-    // Update the line edit to display the result
+   
     ui->lineEdit_2->setText(QString::number(previousResult));
     QStringList parts = expression.split(QRegExp("([+\\-×÷%])"), QString::SkipEmptyParts);
        if (parts.size() == 2) {
@@ -169,7 +169,7 @@ double MainWindow::evaluateExpression(const QString &expression)
         return std::numeric_limits<double>::quiet_NaN();
     }
 
-    // Extract the operator and operands
+   
     QString op = expression.mid(parts.at(0).size(), 1);
     double num1 = parts.at(0).toDouble();
     double num2 = parts.at(1).toDouble();
@@ -178,7 +178,7 @@ double MainWindow::evaluateExpression(const QString &expression)
            {
              return std::numeric_limits<double>::quiet_NaN();
            }
-    // Perform the operation
+   
     double result = 0.0;
 
     if (op == "+")
