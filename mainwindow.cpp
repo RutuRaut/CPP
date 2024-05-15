@@ -124,9 +124,7 @@ void MainWindow::OnBackspaceClicked()
 void MainWindow::OnPushButtonEqualClicked()
 {
     QString expression = ui->lineEdit_2->text();
-
-    // Evaluate the expression if it's the first click
-    if (equalButtonClickCount == 0) {
+if (equalButtonClickCount == 0) {
         previousResult = evaluateExpression(expression);
     } else {
         // Perform the same operation with the previous result and the current expression
@@ -159,16 +157,14 @@ void MainWindow::OnPushButtonEqualClicked()
             previousnum2  = parts.at(1).toDouble();
        }
 
-    // Increment the click count
-    equalButtonClickCount++;
+   equalButtonClickCount++;
 }
 double MainWindow::evaluateExpression(const QString &expression)
 {
-    // Split the expression into parts
-
+ 
     QStringList parts = expression.split(QRegExp("([+\\-×÷%])"), QString::SkipEmptyParts);
 
-    // If the expression does not contain two parts or operator not recognized, return NaN
+ 
     if (parts.size() != 2) {
         return std::numeric_limits<double>::quiet_NaN();
     }
@@ -198,89 +194,3 @@ double MainWindow::evaluateExpression(const QString &expression)
     return result;
 
 }
-//void MainWindow::OnPushButtonEqualClicked()
-//{
-//    QString expression = ui->lineEdit_2->text();
-
-//    // Evaluate the expression if it's the first click
-//    if (equalButtonClickCount == 0) {
-//        previousResult = evaluateExpression(expression);
-//    } else {
-//        // Perform the same operation with the previous result and the current expression
-//        if (!previousOperator.isEmpty()) {
-//          //  double num2 = expression.toDouble(); // Use the current expression as the second operand
-//            if (previousOperator == "+")
-//                previousResult += previousnum2;
-//            else if (previousOperator == "-")
-//                previousResult -= previousnum2;
-//            else if (previousOperator == "×")
-//                previousResult *= previousnum2;
-//            else if (previousOperator == "÷") {
-//                if (previousnum2 != 0) {
-//                    previousResult /= previousnum2;
-//                } else {
-//                    // Handle division by zero error
-//                    ui->lineEdit_2->setText("Error: Division by zero");
-//                    return;
-//                }
-//            } else if (previousOperator == "%")
-//                previousResult = fmod(previousResult, previousnum2);
-//        }
-//    }
-
-//    // Update the line edit to display the result
-//    ui->lineEdit_2->setText(QString::number(previousResult));
-//    QStringList parts = expression.split(QRegExp("([+\\-×÷%])"), QString::SkipEmptyParts);
-//       if (parts.size() == 2) {
-//           previousOperator = expression.mid(parts.at(0).size(), 1);
-//            previousnum2  = parts.at(1).toDouble();
-//       }
-
-//    // Increment the click count
-//    equalButtonClickCount++;
-//}
-
-//void MainWindow::OnPushButtonEqualClicked()
-//{
-//    QString expression = ui->lineEdit_2->text();
-
-//    // Perform different operations based on the number of times the equal button has been clicked
-//    if (equalButtonClickCount % 8 == 0) {
-//        // First click: Evaluate the expression and update previousResult
-//      previousResult = evaluateExpression(expression);
-//    } else {
-//        // Second click: Perform the operation with the previous result, num2, and previous operator
-//        if (!previousOperator.isEmpty()) {
-//          //  if (previousOperator != "=") { // Skip if previous operator is '='
-//               // double num2 =expression.mid(expression.lastIndexOf(previousOperator) + 1).toDouble();
-//                if (previousOperator == "+")
-//                    previousResult += previousnum2;
-//                else if (previousOperator == "-")
-//                    previousResult -= previousnum2;
-//                else if (previousOperator == "×")
-//                    previousResult *= previousnum2;
-//                else if (previousOperator == "÷") {
-//                    if (previousnum2 != 0) {
-//                        previousResult /= previousnum2;
-//                    } else {
-//                        return; // Handle division by zero error
-//                    }
-//                } else if (previousOperator == "%")
-//                    previousResult = fmod(previousResult, previousnum2);
-//            }
-//        }
-//    }
-
-//    // Update the line edit to display the result
-//    ui->lineEdit_2->setText(QString::number(previousResult));
-
-//    // Increment the click count
-//    equalButtonClickCount++;
-
-//    // Store the operator for the next operation
-//    QStringList parts = expression.split(QRegExp("([+\\-×÷%])"), QString::SkipEmptyParts);
-//    if (parts.size() == 2) {
-//        previousOperator = expression.mid(parts.at(0).size(), 1);
-//         previousnum2  = parts.at(1).toDouble();
-//    }
-//}
